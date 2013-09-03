@@ -1,0 +1,108 @@
+﻿@{
+	string sql = "";
+    string DsFechaRecibido = Request.QueryString["fecha"];
+   
+    string NumTramite = Request.QueryString["NumeroTramite"];
+    string NomSolicitante = Request.QueryString["NombreSolicitante"];
+    string NomEdDir = Request.QueryString["NomEdificioDir"];
+    string DsCobama = Request.QueryString["Cobama"];
+    string DsBarrio = Request.QueryString["Barrio"];
+    string DsMatricula = Request.QueryString["Matricula"];
+    string DsNumeroOU = Request.QueryString["NumeroOU"];
+    string DsFechaRespuesta = Request.QueryString["FechaRespuesta"];
+    string DsNombreFuncionario = Request.QueryString["NombreFuncionario"];
+    string DsVrLote100 = Request.QueryString["VrLote100"];
+    string DsVrConsta50 = Request.QueryString["VrConstal50"];
+    string DsVrm2Construido = Request.QueryString["Vrm2construidoLC"];
+    string DsObservaciones = Request.QueryString["Observaciones"];
+    
+    
+    var idNumeroOU2 = Request.QueryString["NumeroOU"];
+
+    if (NumTramite != null){
+         var conexion = Database.Open("ObligacionesOU");
+         sql = "UPDATE OU SET FechaRecibido = '"+DsFechaRecibido+"', NumeroTramite ='"+NumTramite+"', NombreSolicitante ='"+NomSolicitante+"'";
+         sql += ", NomEdificioDir ='"+NomEdDir+"', Cobama ='"+DsCobama+"', Barrio='"+DsBarrio+"',Matricula ='"+DsMatricula+"', ";
+         sql += " NumeroOU ='"+DsNumeroOU+"',FechaRespuesta='"+DsFechaRespuesta+"',NombreFuncionario ='"+DsNombreFuncionario+"',VRLote100 ='"+DsVrLote100+"',";
+         sql += " VrConstal50 ='"+DsVrConsta50+"', Vrm2construidoLC='"+DsVrm2Construido+"',Observaciones='"+DsObservaciones+"' WHERE NumeroOU = '"+idNumeroOU2+"'";
+         var datosUp = conexion.Query(sql);
+    }
+    
+   
+    var conexionDB = Database.Open("ObligacionesOU");
+    var datos = conexionDB.Query ("SELECT * FROM OU WHERE NumeroOU = '"+idNumeroOU2+"'");
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <div id="Contenido">
+                <h1>Actualizar la obligación Urbanistica</h1>
+               <form method="get" action="">
+                    <table>
+                      @foreach (var fila in datos){
+                            <tr>
+                            <td>Introduzca Fecha Recibidio:</td><td>
+                                 <input type="date" name="fecha" value="@Convert.ToDateTime(fila.FechaRecibido).ToString("yyyy-MM-dd")" />
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Número de tramite: </td><td><input type="text" name="NumeroTramite" value="@fila.NumeroTramite"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Nombre solicitante: </td><td><input type="text" name="NombreSolicitante" value="@fila.NombreSolicitante"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Nombre de Edificio o Dirección: </td><td> <input type="text" name="NomEdificioDir" value="@fila.NomEdificioDir"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Cobama: </td><td><input type="text" name="Cobama" value="@fila.Cobama"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Barrio: </td><td><input type="text" name="Barrio" value="@fila.Barrio"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Matricula: </td><td><input type="text" name="Matricula" value="@fila.Matricula"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Número de Obligación Urbanistica: </td><td><input type="text" name="NumeroOU" value="@fila.NumeroOU"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Fecha de Respuesta: </td><td><input type="date" name="FechaRespuesta" value="@Convert.ToDateTime(fila.FechaRespuesta).ToString("yyyy-MM-dd")"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Nombre de Funcionario: </td><td><input type="text" name="NombreFuncionario" value="@fila.NombreFuncionario"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Valor lote al 100%: </td><td><input type="text" name="VrLote100" value="@fila.VrLote100"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Valor Const al 50%: </td><td><input type="text" name="VrConstal50" value="@fila.VrConstal50"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Valor m² construido L/C: </td><td><input type="text" name="Vrm2construidoLC" value="@fila.Vrm2construidoLC"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca las Observaciones: </td><td><textarea rows="3" name="Observaciones" >@fila.Observaciones </textarea></td>
+                        </tr>
+                         <tr>
+                            <td></td><td> <input type="submit" value="Actualizar"></td>
+                        </tr>
+                            
+                        }
+                        
+                    </table>
+                  
+                    
+                </form>
+            recibido: @idNumeroOU2<br>
+            my Fecha: @DsFechaRecibido<br><br>
+            my SQL: @sql
+            </div>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+var datosup = conexionDB.Query(""); 

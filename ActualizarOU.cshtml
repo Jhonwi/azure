@@ -1,0 +1,22 @@
+﻿@{
+   string idNumeroOU = Request["NumeroOU"];
+    
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <h1>Ingrese el dato a consultar</h1>
+        <form action="ActualizarDatos.cshtml" method="get">
+        
+        <input type="text" name="NumeroOU">
+        <input type="submit">
+            recibido: @idNumeroOU
+        </form>
+    </body>
+</html>

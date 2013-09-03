@@ -1,0 +1,104 @@
+﻿@{
+    string DsFechaRecibido = Request.QueryString["FechaRecibido"];
+    string NumTramite = Request.QueryString["NumeroTramite"];
+    string NomSolicitante = Request.QueryString["NombreSolicitante"];
+    string NomEdDir = Request.QueryString["NomEdificioDir"];
+    string DsCobama = Request.QueryString["Cobama"];
+    string DsBarrio = Request.QueryString["Barrio"];
+    string DsMatricula = Request.QueryString["Matricula"];
+    string DsNumeroOU = Request.QueryString["NumeroOU"];
+    string DsFechaRespuesta = Request.QueryString["FechaRespuesta"];
+    string DsNombreFuncionario = Request.QueryString["NombreFuncionario"];
+    string DsVrLote100 = Request.QueryString["VrLote100"];
+    string DsVrConsta50 = Request.QueryString["VrConstal50"];
+    string DsVrm2Construido = Request.QueryString["Vrm2construidoLC"];
+    string DsObservaciones = Request.QueryString["Observaciones"];
+    if (DsFechaRecibido != null){
+         var conexion = Database.Open("ObligacionesOU");
+         var datos = conexion.Query("INSERT INTO OU VALUES('"+DsFechaRecibido+"','"+NumTramite+"','"+NomSolicitante+"','"+NomEdDir+"','"+DsCobama+"','"+DsBarrio+"','"+DsMatricula+"','"+DsNumeroOU+"','"+DsFechaRespuesta+"','"+DsNombreFuncionario+"','"+DsVrLote100+"','"+DsVrConsta50+"','"+DsVrm2Construido+"','"+DsObservaciones+"')");
+
+    }
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Vamos desde el principio</title>
+    </head>
+    <body>
+        <div id="Contenedor">
+            <div id="MenuLateral">
+                <ul>
+                    <li><a href="BaseOU">Obligaciones Urbanisticas</a></li>
+                    <li><a href="InsertarOU">Insertar</a></li>
+                    <li><a href="ActualizarOU">Actualizar</a></li>
+                    <li><a href="EliminarOU">Eliminar</a></li>
+                    <li><a href="ExportarOU">Exportar</a></li>
+                </ul>
+            </div>
+            <div id="Contenido">
+                <h1>Insertar una nueva obligación Urbanistica</h1>
+                <form method="get" action="">
+                    <table>
+                        <tr>
+                            <td>Introduzca Fecha Recibidio: </td><td><input type="date" name="FechaRecibido"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Número de tramite: </td><td><input type="text" name="NumeroTramite"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Nombre solicitante: </td><td><input type="text" name="NombreSolicitante"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Nombre de Edificio o Dirección: </td><td> <input type="text" name="NomEdificioDir"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Cobama: </td><td><input type="text" name="Cobama"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Barrio: </td><td><input type="text" name="Barrio"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Matricula: </td><td><input type="text" name="Matricula"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Número de Obligación Urbanistica: </td><td><input type="text" name="NumeroOU"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Fecha de Respuesta: </td><td><input type="date" name="FechaRespuesta"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Nombre de Funcionario: </td><td><input type="text" name="NombreFuncionario"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Valor lote al 100%: </td><td><input type="text" name="VrLote100"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Valor Const al 50%: </td><td><input type="text" name="VrConstal50"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca Valor m² construido L/C: </td><td><input type="text" name="Vrm2construidoLC"></td>
+                        </tr>
+                         <tr>
+                            <td>Introduzca las Observaciones: </td><td><textarea rows="3" name="Observaciones"> </textarea></td>
+                        </tr>
+                         <tr>
+                            <td></td><td> <input type="submit"></td>
+                        </tr>
+                    </table>
+                    @if (DsFechaRecibido != null)
+                    {
+                        <input type="date" name="fecha" value="@DsFechaRecibido" />
+                        <p>Has introducido el siguiente: @DsFechaRecibido</p>
+                        
+                    }
+                </form>
+            </div>
+        </div>
+ 
+                
+           
+    </body>
+</html>
