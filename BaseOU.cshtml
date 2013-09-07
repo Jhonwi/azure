@@ -1,6 +1,7 @@
 ﻿@{
     var conexionDB = Database.Open("ObligacionesOU");
     var datos = conexionDB.Query ("SELECT * FROM OU"); 
+    
 }
 
 <!DOCTYPE html>
@@ -10,43 +11,63 @@
         <meta charset="utf-8" />
         <title>BaseOU</title>
         <script src="js/jquery110.js"></script>
-        <script src="js/grillasok.js"></script>
+        <script src="js/codigo.js"></script>
+        <script src="js/excel.js"></script>
+        
+        
+        <link rel="stylesheet" href="css/tabletStyle.css" />
+
+
+         
+
     </head>
     <body>
         <h1>Base de Datos Obligaciones Urbanisticas</h1>
         <div id="Contenedor">
-            <div id="MenuLateral">
+            <div id="menu-ppal">
+                <div id="abre-menu">
+                    »
+                </div>
+            </div>
+            <br>
+            <div id="menu">
                 <ul>
-                    <li><a href="BaseOU">Obligaciones Urbanisticas</a></li>
+                    <li><a href="BaseOU">Obligaciones Urbanisticas</a><img src="img/bd.png" width="50px" alt="." ></li>
                     <li><a href="InsertarOU">Insertar</a></li>
                     <li><a href="ActualizarOU">Actualizar</a></li>
                     <li><a href="EliminarOU">Eliminar</a></li>
                     <li><a href="ExportarOU">Exportar</a></li>
                 </ul>
             </div>
-            <section>
-                <div id="ObligacionesOU">
-                    <table border="1">
-                        <tr>
-                            <th>Fecha Recibido</th>
-                            <th>Número Tramite</th>
-                            <th>Nombre Solicitante</th>
-                            <th>Nombre Edificio o Dirección</th>
-                            <th>Cobama</th>
-                            <th>Barrio</th>
-                            <th>Matricula</th>
-                            <th>Número OU</th>
-                            <th>Fecha Respuesta</th>
-                            <th>Nombre Funcionario</th>
-                            <th>V/R LOTE 100</th>
-                            <th>Vr. Const al 50%</th>
-                            <th>Vr. M2 Construído L/C</th>
-                            <th>Observaciones</th>
-                        </tr>
+            <section id="tabla" >
+                    <table border="0" id="obligaciones">
+                         <colgroup>
+    	                    <col class="oce-first" />
+                          </colgroup>
+                        <thead>
+                            <tr>
+                                <th id="thF">Fecha Recibido</th>
+                                <th>Número Tramite</th>
+                                <th>Nombre Solicitante</th>
+                                <th>Nombre Edificio o Dirección</th>
+                                <th>Cobama</th>
+                                <th>Barrio</th>
+                                <th>Matricula</th>
+                                <th>Número OU</th>
+                                <th>Fecha Respuesta</th>
+                                <th>Nombre Funcionario</th>
+                                <th>V/R LOTE 100</th>
+                                <th>Vr. Const al 50%</th>
+                                <th>Vr. M2 Construído L/C</th>
+                                <th id="thU">Observaciones</th>
+                            </tr>
 
-                             @foreach (var fila in datos){
+                        </thead>
+                        
+                        <tbody>
+                            @foreach (var fila in datos){
                                  <tr>
-                                     <td>@fila.FechaRecibido</td>
+                                     <td id="tdF">@fila.FechaRecibido</td>
                                      <td>@fila.NumeroTramite</td>
                                      <td>@fila.NombreSolicitante</td>
                                      <td>@fila.NomEdificioDir</td>
@@ -59,24 +80,17 @@
                                      <td>@fila.VRLote100</td>
                                      <td>@fila.VrConstal50</td>
                                      <td>@fila.Vrm2construidoLC</td>
-                                     <td>@fila.Observaciones</td>
+                                     <td id="tdU">@fila.Observaciones</td>
                                  </tr>
                              }
+                        <tr>
+                            <td colspan="14" id="tdUl"></td>
+                        </tr>
+
+                        </tbody> 
                     </table>
-                   
-                </div>
-
-                <button>Enviar
-                  
-                </button>
             </section>
-
-            <div id="contenedordinamico">
-                <div id="grilladedatos"></div>
-                <button id="save">Guardar</button>
-                <div id="log" style="overflow:auto; height:200px; background-color:#f2f2f2; padding:5px"></div>           
-            </div>
+            <img src="img/bd.png" alt="Fock" id="excel">
         </div>
-
     </body>
 </html>

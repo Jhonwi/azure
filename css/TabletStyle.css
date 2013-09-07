@@ -1,0 +1,128 @@
+a
+{
+    text-decoration: none;
+}
+
+body { 
+    line-height: 1.6em;
+}
+
+section
+{
+    width: 90%;
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#abre-menu
+{
+    width: 50px;
+    background-color: gray;
+    font-size: 5em;
+    height: 40px;
+    border-radius: 0px 15px 15px 0px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+#Contenedor
+{
+    width: 97%;
+    margin: auto;
+}
+
+#menu
+{
+    background-color: rgba(199, 194, 194, 0.30);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px black;
+    width: 15%;
+    float: left;
+    font-size: 1.5em;
+    position: absolute;
+    top: 120px;
+    left: -450PX;
+    z-index: 999;
+    padding: 15px;
+    
+    
+}
+
+#menu-ppal
+{
+    float: left;
+    width: 100%;
+}
+
+#obligaciones{
+   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 30px;
+    margin-left: 12%;
+	text-align: left;
+	border-collapse: collapse;
+    border-radius: 20px;
+    background-color: #e8edff;
+    box-shadow: 0px 0px 15px black;
+}
+
+#obligaciones th{
+    font-size: 14px;
+	font-weight: normal;
+	padding: 12px 15px;
+	color: #039;
+    background-color: #a3a2a3;
+    box-shadow: 0px 2px 5px black;
+    text-align: center;
+}
+
+#obligaciones td {
+    padding: 10px 15px;
+    color: #669;
+    border-top: 1px solid #e8edff;
+}
+
+#obligaciones tr:hover td{
+    color: #339;
+	background-color: #a39e9e;
+}
+
+#thF
+{
+    border-radius: 20px 0px 0px 0px;
+}
+
+#thU
+{
+    border-radius: 0px 20px 0px 0px;
+}
+
+#tdUl
+{
+    border-radius: 0px 0px 20px 20px;
+    background-color: #e8edff;
+    height: 1px;
+}
+
+li{
+    padding-bottom: 30px;
+    margin-top: 50px;
+    text-decoration: none;
+    opacity: 1;
+    height: 30px;
+    line-height: 30px;
+    background-color: Azure;
+    
+    
+}
+img{
+    margin-left: 13px;
+    display: inline-block;
+}
